@@ -9,7 +9,7 @@ class Prices extends React.Component {
 
   render(){
     const {concerts} = this.props;
-
+  
     return(
       <Container>
         <h1>Prices</h1>
@@ -25,8 +25,9 @@ class Prices extends React.Component {
             <p>Day: {concert.day}</p>
             <p>Price: {concert.price}</p>
             <p>Workshops:
-              {concert.workshops}
-              {console.log('WORKSHOPS: ', concert.workshops)}
+              {concert.workshops.map(workshop => (
+                <li key={workshop}>{workshop}</li>
+              ))}
             </p>
           </div>
         ))}
