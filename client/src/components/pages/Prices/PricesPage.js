@@ -1,7 +1,42 @@
 import React from 'react';
-
 import { Alert, Container } from 'reactstrap';
 
+class Prices extends React.Component {
+  componentDidMount(){
+    const {loadConcerts} = this.props;
+    loadConcerts();
+  }
+
+  render(){
+    const {concerts} = this.props;
+
+    return(
+      <Container>
+        <h1>Prices</h1>
+        <p>Prices may differ according the day of the festival. Remember that ticket includes not only the star performance, but also 10+ workshops. We gathered several genre teachers to help you increase your vocal skills, as well as self confidence.</p>
+        
+        <Alert color="info">
+            Attention! <strong>Children under 4 can go freely with you without any other fee!</strong>
+        </Alert>
+        {console.log('CONCERTS: ', concerts)}
+        {concerts.map(concert => (
+          <div key={concert._id}>
+            <h2>{concert.performer}</h2>
+            <p>Day: {concert.day}</p>
+            <p>Price: {concert.price}</p>
+            <p>Workshops:
+              {concert.workshops}
+              {console.log('WORKSHOPS: ', concert.workshops)}
+            </p>
+          </div>
+        ))}
+            
+      </Container>
+    )
+  }
+}
+
+/*
 const Prices = () => (
   <Container>
     <h1>Prices</h1>
@@ -22,5 +57,6 @@ const Prices = () => (
     <p>Workshops: "Increase your vocal range", "How to properly warmup before singing", "It's time for YOU!"</p>
   </Container>
 );
+*/
 
 export default Prices;

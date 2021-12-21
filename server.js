@@ -30,7 +30,15 @@ app.use((req, res) => {
   res.status(404).send('404 not found...');
 });
 
-mongoose.connect(`${process.env.cryptic82245}`, { useNewUrlParser: true });
+const NODE_ENV = process.env.NODE_ENV;
+let dbUri = '';
+
+if(NODE_ENV === 'production') dbUri = `${process.env.cryptic82245}`;
+else if(NODE_ENV === 'test') dbUri = 'mongodb://localhost:27017/restapiDB';
+else dbUri = 'mongodb://localhost:27017/restapiDB';
+
+mongoose.connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(`${process.env.cryptic82245}`, { useNewUrlParser: true });
 const db = mongoose.connection;
 
 db.once('open', () => {
