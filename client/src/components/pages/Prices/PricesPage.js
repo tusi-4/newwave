@@ -18,7 +18,7 @@ class Prices extends React.Component {
         <Alert color="info">
             Attention! <strong>Children under 4 can go freely with you without any other fee!</strong>
         </Alert>
-        {console.log('CONCERTS: ', concerts)}
+
         {concerts.map(concert => (
           <div key={concert._id}>
             <h2>{concert.performer}</h2>
@@ -26,9 +26,9 @@ class Prices extends React.Component {
             <p>Price: {concert.price}</p>
             <p>Workshops:
               {concert.workshops.map(workshop => (
-                <li key={workshop}>{workshop}</li>
+                <li key={workshop._id}>{workshop.name}</li>
               ))}
-            </p>
+              </p>
           </div>
         ))}
             
