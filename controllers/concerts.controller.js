@@ -1,8 +1,9 @@
 const  Concert = require('../models/concert.model');
+const Workshop = require('../models/workshop.model');
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Concert.find().populate('workshop'));
+    res.json(await Concert.find().populate('workshops'));
   }
   catch(err) {
     res.status(500).json({ message: err });
@@ -11,7 +12,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try{
-    const concert = await Concert.findById(req.params.id).populate('workshop');
+    const concert = await Concert.findById(req.params.id).populate('workshops');
     if(!concert) res.status(404).json({ message: 'Not found...'});
     else res.json(concert);
   }

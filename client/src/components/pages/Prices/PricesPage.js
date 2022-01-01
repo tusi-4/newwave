@@ -26,9 +26,10 @@ class Prices extends React.Component {
             <p>Price: {concert.price}</p>
             <p>Workshops:
               {concert.workshops.map(workshop => (
-                <li key={workshop._id}>{workshop.name}</li>
+                <li key={workshop.name}>{workshop.name}</li>
               ))}
               </p>
+              {console.log('WORKSHOPS: ', concert.workshops)}
           </div>
         ))}
             
